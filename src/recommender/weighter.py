@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy
-from surprise import Dataset, model_selection, Reader, SVD
 
 def residential(params):
     # params = dict(povert: yes, )
