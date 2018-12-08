@@ -16,6 +16,7 @@ with open(sys.argv[1]) as file:
 
     for l in file[1:]:
         l = l.split(",")
+        print(l)
         dl = dict((dd, "") for dd in keys)
         for i,k in enumerate(keys):
             dl[k] = l[i]
