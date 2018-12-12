@@ -1,5 +1,7 @@
 import pandas as pd
 
+# TODO fix population
+
 def normalise(data, to, fro, imp):
     data[to] = ((data[fro] 
         - data[fro].mean()) 
@@ -51,11 +53,11 @@ def residential(params):
 
         if k == "pop":
 
-            data["pop"] = (params.prefs[k] - data["pop"])*-1
+            data["pop"] = abs(params.prefs[k] - data["pop"])
 
         elif k == "price":
 
-            data["price"] = (params.prefs[k] - data["median_property_value"])
+            data["price"] = abs(params.prefs[k] - data["median_property_value"])
 
         elif k == "urban":
 
@@ -67,9 +69,11 @@ def residential(params):
             print(k)
 
 
+    # TODO get states info
+
     print(params)
 
     return {
-        "order": data[["education", "employment", "health"]],
-        "pop": data[["pop", "price"]]
+        "order": data[["geo_name", "geo_id", "education", "employment", "health"]],
+        "prefs": data[["geo_name", "geo_id", "pop", "price"]]
     }

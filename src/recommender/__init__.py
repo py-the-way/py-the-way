@@ -1,5 +1,6 @@
 from recommender.weighter import residential
-import inspect
+from recommender.engine import res_choose
+import inspect, json
 
 class Recommender:
     def __init__(self, mode, params):
@@ -7,7 +8,16 @@ class Recommender:
             self.residential(params)
 
     def residential(self, params):
-        residential(params)
+
+        r = residential(params)
+
+        # get top 10 choices
+        top = res_choose(r, params, 10)
+
+        print(top)
+
+        # convert to JSON for REST
+        self.output = top.to_json(orient='records')
 
 class Residential:
     # will be equal to an order index
