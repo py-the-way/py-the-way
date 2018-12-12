@@ -21,6 +21,8 @@ class Residential:
 
     def set_prefs(self, pop, price, urban, industry):
 
+        # pop will be a number from 1000 ->1000000
+
         frame = inspect.currentframe()
         args,_,_,vals = inspect.getargvalues(frame)
 
@@ -28,6 +30,7 @@ class Residential:
 
         for v in args[1:]:
             self.prefs[v] = vals[v]
+
 
     def __getitem__(self,key):
         return self.__dict__[key]
