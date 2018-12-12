@@ -42,6 +42,9 @@ class Residential:
     def keys(self):
         return [k for k in self.__dict__.keys() if self.is_int(k)]
 
+    def order(self):
+        return sorted([k for k in self.__dict__ if self.is_int(k)])
+
     def __str__(self):
         return repr(self.__dict__)
 
