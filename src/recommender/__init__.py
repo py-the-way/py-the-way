@@ -12,12 +12,12 @@ class Recommender:
         r = residential(params)
 
         # get top 10 choices
-        top = res_choose(r, params, 10)
+        top = res_choose(r, params, 15)
 
         print(top)
 
         # convert to JSON for REST
-        self.output = top.to_json(orient='records')
+        self.output = top.to_dict(orient='records')
 
 class Residential:
     # will be equal to an order index

@@ -44,8 +44,9 @@ def residential(params):
 
         # TODO THOMAS: finish this
 
-        imp -= .1
+        imp -= .15
 
+    data["population"] = data["pop"]
 
     for k in params.prefs.keys():
 
@@ -54,7 +55,7 @@ def residential(params):
         if k == "pop":
 
             data["pop"] = abs(params.prefs[k] - data["pop"])
-
+            
         elif k == "price":
 
             data["price"] = abs(params.prefs[k] - data["median_property_value"])
@@ -62,7 +63,7 @@ def residential(params):
         elif k == "urban":
 
             # TODO https://datausa.io/map/?level=county&key=population_living_in_a_rural_area&translate=761.5467090684273,1127.085723711873&scale=7082.5387813829975
-            print(k)
+            print(k, params.prefs[k])
         elif k == "industry":
 
             # TODO: get a certain number of industries here
@@ -75,5 +76,5 @@ def residential(params):
 
     return {
         "order": data[["geo_name", "geo_id", "education", "employment", "health"]],
-        "prefs": data[["geo_name", "geo_id", "pop", "price"]]
+        "prefs": data[["geo_name", "geo_id", "pop", "price",    "population", "median_property_value"]]
     }

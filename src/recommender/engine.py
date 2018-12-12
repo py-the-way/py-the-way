@@ -28,7 +28,14 @@ def res_choose(data, params, top):
             order_top[i]["prefs"] = (prefs.iloc[index]["pop"] 
                 + prefs.iloc[index]["price"])
 
+            order_top[i]["info_pop"] = prefs.iloc[index]["population"] 
+            order_top[i]["info_price"] = prefs.iloc[index]["median_property_value"] 
+
+
+
     # sort by prefs (lower the better)
     order_top = sorted(order_top, key=lambda k: k["prefs"])
+
+    order_top = sorted(order_top[:top], key=lambda k: k["order"])
     
-    return pd.DataFrame(order_top[:top])
+    return pd.DataFrame(order_top)
