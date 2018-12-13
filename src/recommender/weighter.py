@@ -105,6 +105,6 @@ def residential(params):
 
     return {
         "order": data[["geo_name", "geo_id", "education", "employment", "health", "home", "wealth"]],
-        "prefs": data[["geo_name", "geo_id", "pop", "price", "urban"    "population", "median_property_value"]]
+        "prefs": data[["geo_name", "geo_id", "pop", "price", "urban",    "population", "median_property_value"]]
     }
 
