@@ -28,6 +28,6 @@ class View_Residential(Resource):
 
 api.add_resource(View_Residential, '/res/order/<education>/<jobs>/<home>/<health>/<wealth>/prefs/<pop>/<price>/<urban>/<industry>')
 
-# test url: http://127.0.0.1:5002/res/order/2/6/5/4/1/3/prefs/100000/200000/1/tech
+# test url: http://127.0.0.1:5002/res/order/2/5/4/1/3/prefs/100000/200000/1/tech
 
 app.run(port='5002')
