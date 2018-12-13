@@ -43,27 +43,52 @@ def residential(params):
             
             data["education"] = data["high_school_graduation"] + data["grads_total"]
             
-            normalise(data, "education", "education", imp)
+            normalise(data, "education", "education", 1)
+
+            order = data[["education"]]
+            o_scaled = min_max_scaler.fit_transform(order)
+            order = pd.DataFrame(o_scaled)
+            data[["education"]] = order*imp
  
         elif params[i] == "jobs":
 
             # as we want lowest unemployment
-            normalise(data, "employment", "unemployment", imp*-1)
+            normalise(data, "employment", "unemployment", -1)
+
+            order = data[["employment"]]
+            o_scaled = min_max_scaler.fit_transform(order)
+            order = pd.DataFrame(o_scaled)
+            data[["employment"]] = order*imp
 
         elif params[i] == "health":
 
             # as violent crimes is per 100,000
             data["health"] = data["obesity"] + (data["violent_crime"] / 100000)
 
-            normalise(data, "health", "health", imp*-1)
+            normalise(data, "health", "health", -1)
+
+            order = data[["health"]]
+            o_scaled = min_max_scaler.fit_transform(order)
+            order = pd.DataFrame(o_scaled)
+            data[["health"]] = order*imp
 
         elif params[i] == "home":
 
-            normalise(data, "home", "own_housing_percentage", imp)
+            normalise(data, "home", "own_housing_percentage", 1)
+
+            order = data[["home"]]
+            o_scaled = min_max_scaler.fit_transform(order)
+            order = pd.DataFrame(o_scaled)
+            data[["home"]] = order*imp
 
         elif params[i] == "wealth":
 
-            normalise(data, "wealth", "median_property_value", imp)
+            normalise(data, "wealth", "median_property_value", 1)
+
+            order = data[["wealth"]]
+            o_scaled = min_max_scaler.fit_transform(order)
+            order = pd.DataFrame(o_scaled)
+            data[["wealth"]] = order*imp
 
 
         imp -= .2
@@ -90,11 +115,6 @@ def residential(params):
 
 
     # now normalise the data once again using sklearn
-
-    order = data[["education", "employment", "health", "home", "wealth"]]
-    o_scaled = min_max_scaler.fit_transform(order)
-    order = pd.DataFrame(o_scaled)
-    data[["education", "employment", "health", "home", "wealth"]] = order
 
 
     prefs = data[["pop", "price", "urban"]]
