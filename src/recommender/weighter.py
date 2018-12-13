@@ -1,6 +1,6 @@
 import pandas as pd
-
-# TODO fix population
+from sklearn import preprocessing
+import os
 
 def normalise(data, to, fro, imp):
     data[to] = ((data[fro] 
@@ -8,11 +8,25 @@ def normalise(data, to, fro, imp):
         / (data[fro].max() 
         - data[fro].min()))*imp
 
+# https://api.datausa.io/api/join/csv?show=geo&sumlevel=county&required=adult_obesity,pop,income_below_poverty,high_school_graduation,unemployment,violent_crime,age,median_property_value,grads_total,population_living_in_a_rural_area,owner_occupied_housing_units&sort=desc&order=pop&display_names=1&limit=80000&year=latest
+
+min_max_scaler = preprocessing.MinMaxScaler()
+
 def residential(params):
-    # First we do it county by county
+
+    print(params)
+
+    # geo_name,geo_id,pop,adult_obesity,income_below_poverty,high_school_graduation,unemployment,violent_crime,age,median_property_value,owner_occupied_housing_units,population_living_in_a_rural_area,grads_total
+
     data_cols = ["geo_name","geo_id","pop","obesity","poverty",
-    "high_school_graduation","unemployment","violent_crime","age","median_property_value"]
-    data = pd.read_csv("../data/data_by_county.csv", sep=",", names=data_cols, encoding="latin-1")
+    "high_school_graduation","unemployment","violent_crime",
+    "age","median_property_value",
+    "own_housing_percentage",
+    "rural","grads_total"]
+
+    path = str(os.path.dirname(os.path.realpath(__file__)))
+
+    data = pd.read_csv(path+"/../../data/data1.csv", sep=",", names=data_cols, encoding="latin-1")
 
     # weight data and return
 
@@ -24,12 +38,13 @@ def residential(params):
 
         if params[i] == "education":
 
-            data["high_school_graduation"] = data["high_school_graduation"]
-
-            normalise(data, "education", "high_school_graduation", imp)
-
-            # TODO get college grads
-
+            normalise(data, "grads_total", "grads_total", 1)
+            normalise(data, "high_school_graduation", "high_school_graduation", 1)
+            
+            data["education"] = data["high_school_graduation"] + data["grads_total"]
+            
+            normalise(data, "education", "education", imp)
+ 
         elif params[i] == "jobs":
 
             # as we want lowest unemployment
@@ -42,9 +57,16 @@ def residential(params):
 
             normalise(data, "health", "health", imp*-1)
 
-        # TODO THOMAS: finish this
+        elif params[i] == "home":
 
-        imp -= .15
+            normalise(data, "home", "own_housing_percentage", imp)
+
+        elif params[i] == "wealth":
+
+            normalise(data, "wealth", "median_property_value", imp)
+
+
+        imp -= .2
 
     data["population"] = data["pop"]
 
@@ -62,19 +84,27 @@ def residential(params):
 
         elif k == "urban":
 
-            # TODO https://datausa.io/map/?level=county&key=population_living_in_a_rural_area&translate=761.5467090684273,1127.085723711873&scale=7082.5387813829975
-            print(k, params.prefs[k])
-        elif k == "industry":
+            # urban should be a percentage
 
-            # TODO: get a certain number of industries here
-            print(k)
+            data["urban"] = abs(params.prefs[k] - (1 - data["rural"]))
 
 
-    # TODO get states info
+    # now normalise the data once again using sklearn
 
-    print(params)
+    order = data[["education", "employment", "health", "home", "wealth"]]
+    o_scaled = min_max_scaler.fit_transform(order)
+    order = pd.DataFrame(o_scaled)
+    data[["education", "employment", "health", "home", "wealth"]] = order
+
+
+    prefs = data[["pop", "price", "urban"]]
+    p_scaled = min_max_scaler.fit_transform(prefs)
+    prefs = pd.DataFrame(p_scaled)
+    data[["pop", "price", "urban"]] = prefs
+
 
     return {
-        "order": data[["geo_name", "geo_id", "education", "employment", "health"]],
-        "prefs": data[["geo_name", "geo_id", "pop", "price",    "population", "median_property_value"]]
+        "order": data[["geo_name", "geo_id", "education", "employment", "health", "home", "wealth"]],
+        "prefs": data[["geo_name", "geo_id", "pop", "price", "urban"    "population", "median_property_value"]]
     }
+

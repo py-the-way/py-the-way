@@ -1,7 +1,9 @@
 import pandas as pd
 def res_choose(data, params, top):
 
-    data["order"]["order"] = data["order"]["education"] + data["order"]["employment"] + data["order"]["health"]
+    data["order"]["order"] = (data["order"]["education"] 
+        + data["order"]["employment"] + data["order"]["health"]
+        + data["order"]["home"] + data["order"]["wealth"])
 
     # index = order.idxmax()
     order = data["order"].sort_values("order", ascending=False)

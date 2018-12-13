@@ -21,7 +21,7 @@ class Recommender:
 
 class Residential:
     # will be equal to an order index
-    def __init__(self, education, jobs, hapiness, weather, health, wealth):
+    def __init__(self, education, jobs, home, health, wealth):
 
         frame = inspect.currentframe()
         args,_,_,vals = inspect.getargvalues(frame)
