@@ -2,3 +2,14 @@
   
 }
 
+.listItem {
+    list-style: none;
+    user-select: none;
+    width: min-content;
+}
+.sel {
+    cursor: move;
+    z-index: 100;
+    width: min-content;
+    padding: .5em
+}
