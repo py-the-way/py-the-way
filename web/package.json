@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
+    "rc-slider": "^8.6.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-reorder": "^3.0.0-alpha.7",
