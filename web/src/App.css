@@ -131,15 +131,30 @@ table {
     color: rgba(214, 44, 95, 0.877);
     font-size: 1.3em;
     padding: 1em;
+    margin: 3em auto;
+    text-align: center;
+    width: 60%;
+    border-collapse: collapse;
+
+}
+a {
+    text-decoration: none;
 }
 td,th {
-    padding: .3em;
+    padding: .5em .3em;
+    border-bottom: #3333338e solid 2px;
 }
 td {
     color: #fff;
 
 }
-
+table a,table a:visited{
+    color:rgb(170, 170, 170);
+    transition: all .3s;
+}
+table a:hover {
+    color: rgba(214, 44, 95, 0.877);
+}
 svg {
     display: inline;
     vertical-align: -.2em;

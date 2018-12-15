@@ -19,7 +19,7 @@ class View_Residential(Resource):
         int(health), int(wealth))
         # test_data = Residential(2,5,4,1,3)
 
-        test_data.set_prefs(int(pop), int(price), bool(int(urban)), str(industry))
+        test_data.set_prefs(int(pop), int(price), float(urban), str(industry))
         # test_data.set_prefs(100000,200000,True,"tech")
 
         r = Recommender("residential",test_data)

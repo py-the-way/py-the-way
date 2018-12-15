@@ -3,23 +3,15 @@ import Reorder, {reorderImmutable} from 'react-reorder'
 import Immutable from 'immutable';
 import Slider, {Handle} from 'rc-slider';
 import Tooltip from 'rc-tooltip'
-
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import './App.css';
-
 const api = "http://127.0.0.1:5002";
 class App extends Component {
-
   constructor () {
     super();
     this.state = {
-      list: Immutable.List(
-        ["Education","Employment","Home","Healthcare","Wealth"]
-      ),
-      prefs: {"pop": 0,"price":0,"urban":0},
-      submit: "no",
-      items: {}
+      list: Immutable.List(["Education","Employment","Home","Healthcare","Wealth"]),prefs: {"pop": 0,"price":0,"urban":0},submit: "no",items: {}
     };
   }
   onReorder (event, previousIndex, nextIndex) {
@@ -31,13 +23,7 @@ class App extends Component {
   handle = (props) => {
     const { value, dragging, index, ...restProps } = props;
     return (
-      <Tooltip
-        prefixCls="rc-slider-tooltip"
-        overlay={value}
-        visible={dragging}
-        placement="top"
-        key={index}
-      >
+      <Tooltip        prefixCls="rc-slider-tooltip"  overlay={value}  visible={dragging} placement="top"key={index}      >
         <Handle value={value} {...restProps} />
       </Tooltip>
     );
@@ -78,13 +64,8 @@ class App extends Component {
           <h3>Get your recommendations</h3>
           <p>First of all, below are some of the things people look for when moving to a new area. Drag them in order of your personal prefence:</p>
           <Reorder
-            reorderId="myList"
-            component="ul"
-            className={"order"}
-            draggedClassName={"dragged"}
-            lock="horizontal"
-            holdTime={0}
-            onReorder={this.onReorder.bind(this)}
+            reorderId="myList" component="ul"  className={"order"} draggedClassName={"dragged"} lock="horizontal" holdTime={0} onReorder={this.onReorder.bind(this)}
+            
           >
             {
               this.state.list.map((val, i) => (
@@ -116,23 +97,16 @@ class App extends Component {
           </div>
           <button onClick={this.submit}>Get yours</button>
         </div>
-        
       );
     }
     if (this.state.submit === "ing") {
       return (
-        <div className={"load"}><h5>Loading your data<svg width="78px"  height="78px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-liquid">
-        <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-width="{{config.width}}" fill="none" r="35" stroke="#b82651" stroke-width="6"></circle>
-        <path ng-attr-d="{{config.d}}" ng-attr-fill="{{config.c2}}" d="M 21 50 Q 35.5 61.901 50 50 Q 64.5 38.099 79 50 A 29 29 0 0 1 21 50" fill="#b82651">
-          <animate attributeName="d" calcMode="spline" values="M21 50 Q35.5 37 50 50 Q64.5 63 79 50 A29 29 0 0 1 21 50;M21 50 Q35.5 63 50 50 Q64.5 37 79 50 A29 29 0 0 1 21 50;M21 50 Q35.5 37 50 50 Q64.5 63 79 50 A29 29 0 0 1 21 50" keyTimes="0;0.5;1" dur="1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate>
-        </path>
-      </svg></h5>
-        
-        </div>
+        <div className={"load"}><h5>Loading your data<svg width="78px"  height="78px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-liquid"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-width="{{config.width}}" fill="none" r="35" stroke="#b82651" stroke-width="6"></circle><path ng-attr-d="{{config.d}}" ng-attr-fill="{{config.c2}}" d="M 21 50 Q 35.5 61.901 50 50 Q 64.5 38.099 79 50 A 29 29 0 0 1 21 50" fill="#b82651"><animate attributeName="d" calcMode="spline" values="M21 50 Q35.5 37 50 50 Q64.5 63 79 50 A29 29 0 0 1 21 50;M21 50 Q35.5 63 50 50 Q64.5 37 79 50 A29 29 0 0 1 21 50;M21 50 Q35.5 37 50 50 Q64.5 63 79 50 A29 29 0 0 1 21 50" keyTimes="0;0.5;1" dur="1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate></path></svg></h5></div>
       )
     }
     if (this.state.submit === "yes") {
       return (
+        <div><h3>Your recommendations</h3>
         <table><tbody>
           <tr>
             <th>Order</th>
@@ -141,12 +115,11 @@ class App extends Component {
             <th>Avg House Price</th>
           </tr>
           {[...this.state.items].map((x,i) =>
-            <tr><th>{i+1}.</th><td>{x.geo_name}</td><td>{x.info_pop.toLocaleString()}</td><td>&euro;{x.info_price.toLocaleString()}</td></tr>
+            <tr><th>{i+1}.</th><td><a title={"Google Maps"} target={"_blank"} href={"https://www.google.com/maps/search/"+x.geo_name}>{x.geo_name}</a></td><td>{x.info_pop.toLocaleString()}</td><td>&euro;{x.info_price.toLocaleString()}</td></tr>
           )}
-        </tbody></table>
+        </tbody></table><a href={"/"}><button>Do it again</button></a></div>
       )
     }
-    
   }
 }
 export default App;
