@@ -1,5 +1,6 @@
 from recommender.weighter import residential
 from recommender.engine import res_choose
+from recommender.jobs import indeed
 import inspect, json
 
 class Recommender:
@@ -14,7 +15,9 @@ class Recommender:
         # get top 10 choices
         top = res_choose(r, params, 15)
 
-        print(top)
+        top_with_jobs = indeed(top, params.jobs)
+
+        print(top_with_jobs)
 
         # convert to JSON for REST
         self.output = top.to_dict(orient='records')
@@ -41,6 +44,15 @@ class Residential:
         for v in args[1:]:
             self.prefs[v] = vals[v]
 
+    def set_jobs(self, title, pay):
+
+        frame = inspect.currentframe()
+        args,_,_,vals = inspect.getargvalues(frame)
+
+        self.jobs = {}
+
+        for v in args[1:]:
+            self.jobs[v] = vals[v]
 
     def __getitem__(self,key):
         return self.__dict__[key]
