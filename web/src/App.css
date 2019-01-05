@@ -160,3 +160,15 @@ svg {
     vertical-align: -.2em;
     margin-left: .2em;
 }
+.jobname,.jobpay{
+    margin-top: 2em;
+    margin: auto;
+    display: block;
+    width: 40%;
+    padding: 1em;
+    border-bottom: .2em solid rgba(214, 44, 95, 0.877);
+    background: rgba(102, 102, 102, 0.089);
+    box-shadow: 0 0 6em -.5em rgba(214, 44, 95, 0.877);
+    font-size: 1.8em;
+    color: rgba(214, 44, 95, 0.6);
+}

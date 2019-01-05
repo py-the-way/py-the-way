@@ -99,6 +99,12 @@ class App extends Component {
               <span>Percentage Urban:</span>
               <Slider onChange={this.urSlide} className={"drag"} marks={{ 0: '0%', 100: '100%' }} min={0} max={100} handle={this.handle} />
             </div>
+            <br />
+            <p>Input the job title you hold for job listings in relevant areas:</p>
+            <div>
+              <input type={"text"} className={"jobname"} name="JobDesc" placeholder="Job Title"></input>
+              <input type={"number"} className={"jobpay"} name="JobDesc" placeholder="$100000"></input>
+            </div>
             <button onClick={this.submit}>Get yours</button>
           </div>
         );
