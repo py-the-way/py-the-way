@@ -83,7 +83,7 @@ class App extends Component {
           <p>Now, lets get an estimate on some of the figures you'd like to see from your new home:</p>
           <div className={"dragger"}>
             <span>Population of county:</span>
-            <Slider onChange={this.popSlide} className={"drag"} marks={{ 1000: 1000, 1000000: 1000000 }} min={1000} max={1000000}  handle={this.handle} />
+            <Slider onChange={this.popSlide} className={"drag"} marks={{ 1000: 1000, 10000000: 10000000 }} min={1000} max={10000000}  handle={this.handle} />
           </div>
           <br />
           <div className={"dragger"}>
