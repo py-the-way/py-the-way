@@ -83,17 +83,17 @@ class App extends Component {
           <p>Now, lets get an estimate on some of the figures you'd like to see from your new home:</p>
           <div className={"dragger"}>
             <span>Population of county:</span>
-            <Slider onChange={this.popSlide} className={"drag"} marks={{ 1000: 1000, 10000000: 10000000 }} min={1000} max={10000000}  handle={this.handle} />
+            <Slider onChange={this.popSlide} className={"drag"} marks={{ 1000: '1,000', 10000000: '10,000,000' }} min={1000} max={10000000}  handle={this.handle} />
           </div>
           <br />
           <div className={"dragger"}>
             <span>Price of a home ($):</span>
-            <Slider onChange={this.prSlide} className={"drag"} marks={{ 10000: 10000, 5000000: 5000000 }} min={10000} max={5000000} handle={this.handle} />
+            <Slider onChange={this.prSlide} className={"drag"} marks={{ 10000: '10,000', 5000000: '5,000,000' }} min={10000} max={5000000} handle={this.handle} />
           </div>
           <br />
           <div className={"dragger"}>
             <span>Percentage Urban:</span>
-            <Slider onChange={this.urSlide} className={"drag"} marks={{ 0: 0, 100: 100 }} min={0} max={100} handle={this.handle} />
+            <Slider onChange={this.urSlide} className={"drag"} marks={{ 0: '0%', 100: '100%' }} min={0} max={100} handle={this.handle} />
           </div>
           <button onClick={this.submit}>Get yours</button>
         </div>

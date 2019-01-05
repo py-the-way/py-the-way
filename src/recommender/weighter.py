@@ -9,7 +9,7 @@ def normalise(data, to, fro, imp):
         - data[fro].min()))*imp
 
 # https://api.datausa.io/api/join/csv?show=geo&sumlevel=county&required=adult_obesity,pop,income_below_poverty,high_school_graduation,unemployment,violent_crime,age,median_property_value,grads_total,population_living_in_a_rural_area,owner_occupied_housing_units&sort=desc&order=pop&display_names=1&limit=80000&year=latest
-
+# https://api.datausa.io/api/join?=
 min_max_scaler = preprocessing.MinMaxScaler()
 
 def residential(params):
