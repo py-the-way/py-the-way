@@ -12,7 +12,7 @@ class Recommender:
 
         r = residential(params)
 
-        # get top 10 choices
+        # get top 15 choices
         top = res_choose(r, params, 15)
 
         jobs = indeed(top, params.jobs)
@@ -65,6 +65,12 @@ class Residential:
             return True
         except:
             return False
+
+    def index(self, val):
+        for key, v in self.__dict__.items():
+            if val == v:
+                return int(key)
+        return -1
 
     def keys(self):
         return [k for k in self.__dict__.keys() if self.is_int(k)]

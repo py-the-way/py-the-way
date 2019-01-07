@@ -53,9 +53,12 @@ def cal_top(jobs, data, params):
 
 	# sort by available jobs and prefs
 
-	# - scale available jobs and prefs
-	scaled_jobs = min_max_scaler.fit_transform(data[['jobs_available']])
+	# - scale available jobs and prefs. also take user params into account
+	params_jobs = 1-(.1*params.index('jobs'))
+
+	scaled_jobs = min_max_scaler.fit_transform(data[['jobs_available']])*params_jobs
 	scaled_prefs = min_max_scaler.fit_transform(data[['prefs']])
+
 
 	# - then scale the sum of both of them for easy reading
 	data['jobs+prefs'] =  min_max_scaler.fit_transform(scaled_jobs + scaled_prefs)
