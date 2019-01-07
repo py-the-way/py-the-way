@@ -17,7 +17,7 @@ class Recommender:
 
         jobs = indeed(top, params.jobs)
 
-        top_jobs = cal_top(jobs, top, params.jobs['pay'])
+        top_jobs = cal_top(jobs, top, params)
 
         print(top_jobs)
 
