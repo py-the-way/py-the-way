@@ -1,6 +1,6 @@
 from recommender.weighter import residential
 from recommender.engine import res_choose
-from recommender.jobs import indeed
+from recommender.jobs import indeed, cal_top
 import inspect, json
 
 class Recommender:
@@ -15,9 +15,11 @@ class Recommender:
         # get top 10 choices
         top = res_choose(r, params, 15)
 
-        top_with_jobs = indeed(top, params.jobs)
+        jobs = indeed(top, params.jobs)
 
-        print(top_with_jobs)
+        top_jobs = cal_top(jobs, top, params.jobs['pay'])
+
+        print(top_jobs)
 
         # convert to JSON for REST
         self.output = top.to_dict(orient='records')

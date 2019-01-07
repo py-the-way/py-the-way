@@ -50,7 +50,7 @@ class App extends Component {
       ind[i] = s.list.indexOf(ind[i])+1;
     }
     this.setState({submit:"ing"});
-    fetch(`${api}/res/order/${ind[0]}/${ind[1]}/${ind[2]}/${ind[3]}/${ind[4]}/prefs/${s.prefs["pop"]}/${s.prefs["price"]}/${s.prefs["urban"]}/nb`)
+    fetch(`${api}/res/order/${ind[0]}/${ind[1]}/${ind[2]}/${ind[3]}/${ind[4]}/prefs/${s.prefs["pop"]}/${s.prefs["price"]}/${s.prefs["urban"]}/nb`) //FIX
     .then(result=>result.json()).then(items=>{this.setState({items, submit:"yes"}); console.log(items)});
   }
   render() {

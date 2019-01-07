@@ -22,7 +22,7 @@ class View_Residential(Resource):
 
         test_data.set_prefs(int(pop), int(price), float(urban), str(industry))
 
-        test_data.set_jobs(title, pay)
+        test_data.set_jobs(title, int(pay))
 
         # test_data.set_prefs(100000,200000,True,"tech")
 
