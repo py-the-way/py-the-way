@@ -129,7 +129,10 @@ class App extends Component {
 						<th>Avg House Price</th>
 					</tr>
 					{[...this.state.items].map((x,i) =>
-						<tr><th>{i+1}.</th><td><a title={"Google Maps"} target={"_blank"} href={"https://www.google.com/maps/search/"+x.geo_name}>{x.geo_name}</a></td><td>{x.info_pop.toLocaleString()}</td><td>&euro;{x.info_price.toLocaleString()}</td></tr>
+						<>
+							<tr><th>{i+1}.</th><td><a title={"Google Maps"} target={"_blank"} href={"https://www.google.com/maps/search/"+x.geo_name}>{x.geo_name}</a></td><td>{x.info_pop.toLocaleString()}</td><td>&euro;{x.info_price.toLocaleString()}</td></tr>
+							<tr><td colSpan={4}>{x.jobs_available} jobs available for {this.state.jobs['title'].replace("+"," ")} with a wage of ${x.jobs_pay} on indeed.com.</td></tr>
+						</>
 					)}
 				</tbody></table><a href={"/"}><button>Do it again</button></a></div>
 				)
