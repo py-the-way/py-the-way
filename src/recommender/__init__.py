@@ -22,7 +22,7 @@ class Recommender:
 		print(top_jobs)
 
 		# convert to JSON for REST
-		self.output = top.to_dict(orient='records')
+		self.output = top_jobs.to_dict(orient='records')
 
 class Residential:
 	# will be equal to an order index

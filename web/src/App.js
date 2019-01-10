@@ -11,7 +11,7 @@ class App extends Component {
 	constructor () {
 		super();
 		this.state = {
-			list: Immutable.List(["Education","Employment","Home","Healthcare","Wealth"]),prefs: {"pop": 0,"price":0,"urban":0},submit: "no",items: {}
+			list: Immutable.List(["Education","Employment","Home","Healthcare","Wealth"]),prefs: {"pop": 0,"price":0,"urban":0},jobs:{"title":"",amount:0},submit: "no",items: {}
 		};
 	}
 	onReorder (event, previousIndex, nextIndex) {
@@ -43,6 +43,16 @@ class App extends Component {
 		l["urban"] = v/100;
 		this.setState({prefs:l});
 	}
+	titleChange = (v) => {
+		let l = this.state.jobs;
+		l["title"] = v.target.value.replace(" ", "+");
+		this.setState({jobs:l});
+	}
+	descChange = (v) => {
+		let l = this.state.jobs;
+		l["amount"] = v.target.value;
+		this.setState({jobs:l});
+	}
 	submit = () => {
 		let s = this.state;
 		let ind = ["Education","Employment","Home","Healthcare","Wealth"];
@@ -50,7 +60,7 @@ class App extends Component {
 			ind[i] = s.list.indexOf(ind[i])+1;
 		}
 		this.setState({submit:"ing"});
-		fetch(`${api}/res/order/${ind[0]}/${ind[1]}/${ind[2]}/${ind[3]}/${ind[4]}/prefs/${s.prefs["pop"]}/${s.prefs["price"]}/${s.prefs["urban"]}/nb`) //FIX
+		fetch(`${api}/res/order/${ind[0]}/${ind[1]}/${ind[2]}/${ind[3]}/${ind[4]}/prefs/${s.prefs["pop"]}/${s.prefs["price"]}/${s.prefs["urban"]}/nb/jobs/${s.jobs["title"]}/${s.jobs["amount"]}`)
 		.then(result=>result.json()).then(items=>{this.setState({items, submit:"yes"}); console.log(items)});
 	}
 	render() {
@@ -68,17 +78,11 @@ class App extends Component {
 						<h3>Get your recommendations</h3>
 						<p>First of all, below are some of the things people look for when moving to a new area. Drag them in order of your personal prefence:</p>
 						<Reorder
-							reorderId="myList" component="ul"  className={"order"} draggedClassName={"dragged"} lock="horizontal" holdTime={0} onReorder={this.onReorder.bind(this)}
-							
-						>
+							reorderId="myList" component="ul"  className={"order"} draggedClassName={"dragged"} lock="horizontal" holdTime={0} onReorder={this.onReorder.bind(this)}>
 							{
 								this.state.list.map((val, i) => (
 									<div key={val} className={"sel"}>
-										<li
-											className={"listItem"}
-										>
-											{i+1}: {val}
-										</li>
+										<li className={"listItem"}>{i+1}: {val}</li>
 									</div>
 								)).toArray()
 							}
@@ -99,11 +103,11 @@ class App extends Component {
 							<span>Percentage Urban:</span>
 							<Slider onChange={this.urSlide} className={"drag"} marks={{ 0: '0%', 100: '100%' }} min={0} max={100} handle={this.handle} />
 						</div>
-						<br />
+						<br /><br />
 						<p>Input the job title you hold for job listings in relevant areas:</p>
-						<div>
-							<input type={"text"} className={"jobname"} name="JobDesc" placeholder="Job Title"></input>
-							<input type={"number"} className={"jobpay"} name="JobDesc" placeholder="$100000"></input>
+						<div className={"input"}>
+							<span>Job Title:</span><input onChange={this.titleChange} type={"text"} className={"jobname"} name="JobDesc" placeholder="Job Title"></input>
+							<span>Desired Salary:</span><input onChange={this.descChange} type={"number"} className={"jobpay"} name="JobDesc" placeholder="$1,000,000"></input>
 						</div>
 						<button onClick={this.submit}>Get yours</button>
 					</div>

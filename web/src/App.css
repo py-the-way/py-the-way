@@ -161,14 +161,23 @@ svg {
 	margin-left: .2em;
 }
 .jobname,.jobpay{
-	margin-top: 2em;
 	margin: auto;
+	margin-top: .5em;
 	display: block;
 	width: 40%;
-	padding: 1em;
-	border-bottom: .2em solid rgba(214, 44, 95, 0.877);
-	background: rgba(102, 102, 102, 0.089);
-	box-shadow: 0 0 6em -.5em rgba(214, 44, 95, 0.877);
+	padding: .5em;
+	border: 0;
+	border-bottom: .2em solid rgb(146, 33, 67);
+	background: rgba(102, 102, 102, 0.041);
+	box-shadow: 0 0 3em -.6em rgba(214, 44, 95, 0.877);
 	font-size: 1.8em;
-	color: rgba(214, 44, 95, 0.6);
+	color: rgba(255, 255, 255, 0.808);
+	outline: none;
+}
+.input span {
+	color: rgb(214, 44, 95);
+	text-align: center;
+	margin: 1em auto;
+	display: block;
+	font-size: 1.4em;
 }
