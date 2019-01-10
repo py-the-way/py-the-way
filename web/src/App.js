@@ -11,7 +11,7 @@ class App extends Component {
 	constructor () {
 		super();
 		this.state = {
-			list: Immutable.List(["Education","Employment","Home","Healthcare","Wealth"]),prefs: {"pop": 0,"price":0,"urban":0},jobs:{"title":"",amount:0},submit: "no",items: {}
+			list: Immutable.List(["Education","Employment","Home","Healthcare","Wealth"]),prefs: {"pop": 0,"price":0,"urban":0},jobs:{"title":"none",amount:0},submit: "no",items: {}
 		};
 	}
 	onReorder (event, previousIndex, nextIndex) {
@@ -131,7 +131,7 @@ class App extends Component {
 					{[...this.state.items].map((x,i) =>
 						<>
 							<tr><th>{i+1}.</th><td><a title={"Google Maps"} target={"_blank"} href={"https://www.google.com/maps/search/"+x.geo_name}>{x.geo_name}</a></td><td>{x.info_pop.toLocaleString()}</td><td>&euro;{x.info_price.toLocaleString()}</td></tr>
-							<tr><td colSpan={4}>{x.jobs_available} jobs available for {this.state.jobs['title'].replace("+"," ")} with a wage of ${x.jobs_pay} on indeed.com.</td></tr>
+							<tr className={"indeed"}><td colSpan={4}><b>{x.jobs_available}</b> jobs available for <b>{this.state.jobs['title'].replace("+"," ")}</b> with a wage of <b>${x.jobs_pay}</b> on <a target={"_blank"} href="https://indeed.com"><img src={"/indeed.png"} /></a></td></tr>
 						</>
 					)}
 				</tbody></table><a href={"/"}><button>Do it again</button></a></div>

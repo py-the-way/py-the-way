@@ -137,11 +137,29 @@ table {
 	border-collapse: collapse;
 
 }
+table a {
+	vertical-align: sub;
+}
+table b {
+	color: rgba(214, 44, 95, 0.877);
+	font-weight: normal;
+}
+.indeed td {
+	font-size: .8em;
+	color:rgb(170, 170, 170);
+	padding: 1.5em;
+}
+.indeed {
+	border-bottom: solid .2em rgb(54, 54, 54);
+}
+table img {
+	width: 3em;
+}
 a {
 	text-decoration: none;
 }
 td,th {
-	padding: .5em .3em;
+	padding: .7em .3em;
 	border-bottom: #3333338e solid 2px;
 }
 td {
