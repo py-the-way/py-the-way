@@ -1,0 +1,9 @@
+env:
+    DOCKER_COMPOSE_VERSION: 1.23.2
+
+services:
+    - docker
+
+before_install:
+- docker pull nginx
+- docker un 
