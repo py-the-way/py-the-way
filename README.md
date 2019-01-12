@@ -1,6 +1,6 @@
 # ![Py The Way](./logo.png?raw=true)
 
-[![Build Status](https://travis-ci.org/py-the-way/py-the-way.svg?branch=master)](https://travis-ci.org/py-the-way/py-the-way)
+[![Build Status](https://travis-ci.org/py-the-way/py-the-way.svg?branch=master)](https://travis-ci.org/py-the-way/py-the-way) [![License](https://img.shields.io/github/license/py-the-way/py-the-way.svg)](https://github.com/py-the-way/py-the-way/blob/master/LICENSE)
 
 A recommendation system for suggesting where a user should live within the USA based on input data and datasets
 
