@@ -1,12 +1,12 @@
-# py-the-way
+# ![Py The Way](./ptw1.svg?raw=true)
 
 A recommendation system for suggesting where a user should live within the USA based on input data and datasets
 
-## Aim
+## About this projects
 
 Make a functional recommendation system using python and pandas
 
-## Development
+## Installation
 ### Frontend
 - `cd web`
 - (First Time) `npm i`

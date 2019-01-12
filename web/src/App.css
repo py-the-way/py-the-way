@@ -27,6 +27,10 @@ h2 {
 	color: #fff;
 	margin-top: 33vh;
 }
+h2>img {
+	width: 40%;
+	padding-top: .1em;
+}
 .view p {
 	text-shadow: 0 0 3em #f1f1f185;
 	margin-top: 1em; 

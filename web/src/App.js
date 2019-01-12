@@ -72,7 +72,7 @@ class App extends Component {
 				return (
 					<div className="App">
 						<div className={"view"}>
-							<h2>Py The Way</h2>
+							<h2><img src={"ptw1w.svg"} alt="py-the-way"/></h2>
 							<p>A recommendation system for suggesting where a user should live within the USA based on input data and datasets</p>
 						</div>
 						<h3>Get your recommendations</h3>
