@@ -6,7 +6,7 @@ A recommendation system for suggesting where a user should live within the USA b
 
 This project is a recommendation system that recommends where a user should live in the US using **big data**, **python** and **pandas**.
 
-It was originally made for a hackathon.
+It was originally made for a hackathon where it came first place.
 
 ## Requirements
 - Docker
