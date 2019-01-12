@@ -47,3 +47,9 @@ It was originally made for a hackathon where it came first place.
 - `cd src`
 - (First Time) `pip install -r requirements.txt`
 - `python3 main.py`
+
+
+
+## Contributors
+- Eric Moynihan aka [TooFiveFive](https://github.com/TooFiveFive)
+- Thomas Galligan aka [Thomas007G](https://github.com/Thomas007G)
