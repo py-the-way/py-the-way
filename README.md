@@ -1,4 +1,4 @@
-# ![Py The Way](./ptw1.svg?raw=true)
+# ![Py The Way](./logo.png?raw=true)
 
 A recommendation system for suggesting where a user should live within the USA based on input data and datasets
 
