@@ -20,7 +20,7 @@ It was originally made for a hackathon.
 
 ### Production
 1. In the `web` directory, first change `api` in `App.js` to your backend endpoint.
-2. Run `npm run build` in that directory.
+2. Run `npm i` and `npm run build` in that directory.
 3. In the base dir, create file called `.env`.
 4. Fill that file out as such:
 	```
