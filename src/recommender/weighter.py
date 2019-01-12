@@ -26,7 +26,7 @@ def residential(params):
 
 	path = str(os.path.dirname(os.path.realpath(__file__)))
 
-	data = pd.read_csv(path+"/../../data/data1.csv", sep=",", names=data_cols, encoding="latin-1")
+	data = pd.read_csv(path+"/../data/data1.csv", sep=",", names=data_cols, encoding="latin-1")
 
 	# weight data and return
 

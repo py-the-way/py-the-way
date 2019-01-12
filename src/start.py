@@ -34,4 +34,4 @@ api.add_resource(View_Residential, '/res/order/<education>/<jobs>/<home>/<health
 
 # test url: http://127.0.0.1:5002/res/order/2/5/4/1/3/prefs/100000/200000/0.3/tech/jobs/computer+science/100000
 
-app.run(port='5002')
+app.run(port='5002', host='0.0.0.0')

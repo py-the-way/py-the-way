@@ -1,0 +1,16 @@
+version: '3'
+services:
+    frontend:
+        image: nginx
+        volumes:
+        - ./web/build:/usr/share/nginx/html
+        ports:
+        - "${FRONTEND_PORT}:80"
+        environment:
+        - NGINX_HOST=${HOST}
+        restart: always
+    backend:
+        build: ./src
+        ports:
+        - "${BACKEND_PORT}:5002"
+        restart: always

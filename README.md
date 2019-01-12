@@ -4,14 +4,18 @@ A recommendation system for suggesting where a user should live within the USA b
 
 ## About this projects
 
-Make a functional recommendation system using python and pandas
+This project is a recommendation system that recommends where a user should live in the US using **big data**, **python** and **pandas**.
+
+It was originally made for a hackathon.
 
 ## Installation
-### Frontend
+
+### Development
+#### Frontend
 - `cd web`
 - (First Time) `npm i`
 - `npm start`
-### Backend
+#### Backend
 - `cd src`
 - (First Time) `pip install -r requirements.txt`
 - `python3 main.py`
