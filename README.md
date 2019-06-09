@@ -50,5 +50,5 @@ It was originally made for a hackathon where it came first place.
 
 
 ## Contributors
-- Eric Moynihan aka [TooFiveFive](https://github.com/TooFiveFive)
+- Eric Moynihan aka [ericm](https://github.com/ericm)
 - Thomas Galligan aka [Thomas007G](https://github.com/Thomas007G)
